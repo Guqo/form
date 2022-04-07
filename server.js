@@ -14,34 +14,40 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
 
 /* Nastavení endpointu, na kterém server provede odpověď a pošle klientovi */
-app.get('/about', (req, res) => {
-    res.send('Webserver IT2')
-    res.end();
-});
+// app.get('/about', (req, res) => {
+//     res.send('Webserver IT2')
+//     res.end();
+// });
 
 /* Endpoint serveru očekávající dva parametry - user a password */
 /* Příklad URL: http://localhost:3000/secret?user=Pepa&password=007 */
-app.get('/secret', (req, res) => {
-    let user = req.query.user;
-    let password = req.query.password;
-    res.send(`Uživatel: ${user} | heslo: ${password}`);
-    res.end();
-});
+// app.get('/secret', (req, res) => {
+//     let user = req.query.user;
+//     let password = req.query.password;
+//     res.send(`Uživatel: ${user} | heslo: ${password}`);
+//     res.end();
+// });
 
-app.get('/save', (req, res) => {
-    let player = req.query.player;
-    let points = req.query.points;
-    res.send(`Hráč: ${player} | body: ${points}`);
-    res.end();
-});
+// app.get('/save', (req, res) => {
+//     let cvik = req.query.cvik;
+//     let vaha = req.query.vaha;
+//     let serie = req.body.serie;
+//     let opakovani = req.body.opakovani;
+//     res.send(`Cvik: ${cvik} | Váha: ${vaha} | Série: ${serie} | Opakování ${opakovani}`);
+//     res.end();
+// });
 
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
+const urlencodedParser = bodyParser.urlencoded({
+    extended: false
+});
 
 app.post('/save', urlencodedParser, (req, res) => {
-    let player = req.body.player;
-    let points = req.body.points;
+    let cvik = req.body.cvik;
+    let vaha = req.body.vaha;
+    let serie = req.body.serie;
+    let opakovani = req.body.opakovani;
     let date = new Date();
-    let str = `${player},${points},${date.toLocaleDateString()},${date.toLocaleTimeString()}\n`;
+    let str = `${cvik},${vaha},${serie},${opakovani}\n`;
     fs.appendFile('./data/result.csv', str, function(err) {
         if (err) {
             console.error(err);
@@ -59,7 +65,10 @@ app.get('/results', (req, res) => {
         .then(data => {
             console.log(data);
             // res.send(data);
-            res.render('results.pug', { 'players': data, 'nadpis': 'Výsledky hráčů' });
+            res.render('results.pug', {
+                'players': data,
+                'nadpis': 'Cviky'
+            });
         })
         .catch(err => {
             console.log(err);

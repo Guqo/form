@@ -5,3 +5,22 @@ input {
 main {
     margin-top: 50px;
 }
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+button {
+    margin: 5px;
+}
+
+a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+a:visited {
+    color: white;
+    text-decoration: none;
+}

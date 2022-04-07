@@ -1,1 +1,0 @@
-odešle mi to, ale neodešle mi to přesné věci (např.: jméno cviku, vahu, serie, opakovani). Musím dodělat IDčka do JS.

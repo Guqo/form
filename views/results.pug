@@ -1,21 +1,25 @@
 html 
     head 
-        title Výsledky hry
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        title Cviky
         style
             include css/styles.css
     body
-        h1 #{nadpis}
-        table 
-            thead 
-                tr 
-                    th Jméno hráče 
-                    th Počet bodů
-                    th Datum 
-                    th Čas 
-            tbody 
-                each pl in players 
+        main
+            h1 #{nadpis}
+            table 
+                thead 
                     tr 
-                        td  #{pl.player}        
-                        td  #{pl.points}
-                        td  #{pl.date}
-                        td  #{pl.time}
+                        th Cvik 
+                        th Váha
+                        th Série 
+                        th Opakování
+                tbody 
+                    each pl in players 
+                        tr 
+                            td  #{pl.player}        
+                            td  #{pl.points}
+                            td  #{pl.date}
+                            td  #{pl.time}
+            button
+                a(href='../') Zpět na vložení cviku
