@@ -15,11 +15,12 @@ html
                         th Série 
                         th Opakování
                 tbody 
-                    each pl in players 
+                <!-- players zde nešli změnit, pokud jsem to změnil nefungovaly výsledky -->
+                    each cv in players
                         tr 
-                            td  #{pl.player}        
-                            td  #{pl.points}
-                            td  #{pl.date}
-                            td  #{pl.time}
+                            td  #{cv.cvik}        
+                            td  #{cv.vaha}
+                            td  #{cv.serie}
+                            td  #{cv.opakovani}
             button
                 a(href='../') Zpět na vložení cviku
